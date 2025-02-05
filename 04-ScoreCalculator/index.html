@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>04 - Score Calculator</title>
+        <link rel="stylesheet" href="./pico.jade.min.css" />
+    </head>
+    <body>
+        <main class="container">
+            <h1>Score Calculator</h1>
+            <p>Make Calculating your score for each subject easier</p>
+            <div class="grid">
+                <div>
+                    <form>
+                        <fieldset class="grid">
+                            <!-- get input for English, Marathi, Science, Social Science, Mathematics Score -->
+                            <label>
+                                English
+                                <input
+                                    type="number"
+                                    id="english"
+                                    name="english"
+                                    placeholder="English"
+                                    autocomplete="off"
+                                    required
+                                />
+                            </label>
+                            <label>
+                                Marathi
+                                <input
+                                    type="number"
+                                    id="marathi"
+                                    name="marathi"
+                                    placeholder="Marathi"
+                                    autocomplete="off"
+                                    required
+                                />
+                            </label>
+                        </fieldset>
+                        <fieldset class="grid">
+                            <label>
+                                Science
+                                <input
+                                    type="number"
+                                    id="science"
+                                    name="science"
+                                    placeholder="Science"
+                                    autocomplete="off"
+                                    required
+                                />
+                            </label>
+                            <label>
+                                Mathematics
+                                <input
+                                    type="number"
+                                    id="mathematics"
+                                    name="mathematics"
+                                    placeholder="Mathematics"
+                                    autocomplete="off"
+                                    required
+                                />
+                            </label>
+                        </fieldset>
+
+                        <input
+                            type="submit"
+                            value="Calculate Score"
+                            onclick="calculateScore"
+                        />
+                    </form>
+                </div>
+                <div id="output">
+                    <blockquote>
+                        “Quality is more important than quantity. One home run
+                        is much better than two doubles”
+                        <footer>
+                            <cite>— Steve Jobs</cite>
+                        </footer>
+                    </blockquote>
+                </div>
+            </div>
+        </main>
+
+        <script src="script.js"></script>
+    </body>
+</html>

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en"></html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="""viewport" content="""width=device-width, initial-scale=""1.0">
+    <title>Student Registeration Form</title>
+    <link rel="stylesheet" href="pico.jade.min.css">
+</head>
+<body>
+    <main class="container">
+        <h1>Student Registration Form</h1>
+        <form id="registrationForm" novalidate>
+            <div>
+                <label for="name">Name</label>
+                <input id="name" type="text" placeholder="Enter your name" required aria-describedby="nameError">
+                <small class="error" id="nameError"></small>
+            </div>
+            <div>
+                <label for="email">Email</label>
+                <input id="email" type="email" placeholder="Enter your email" required aria-describedby="emailError">
+                <small class="error" id="emailError"></small>
+            </div>
+            <div>
+                <label for="password">Password</label>
+                <input id="password" type="password" placeholder="Enter your password" required aria-describedby="passwordError">
+                <small class="error" id="passwordError"></small>
+            </div>
+            <div>
+                <label for="dob">Date of Birth</label>
+                <input id="dob" type="date" required aria-describedby="dobError">
+                <small class="error" id="dobError"></small>
+            </div>
+            <div>
+                <label for="prn">PRN</label>
+                <input id="prn" type="text" placeholder="Enter your PRN" required aria-describedby="prnError">
+                <small class="error" id="prnError"></small>
+            </div>
+            <button type="submit">Register</button>
+        </form>
+    </main>
+
+    <script>
+        const nameInput = document.getElementById('name');
+        const emailInput = document.getElementById('email');
+        const passwordInput = document.getElementById('password');
+        const dobInput = document.getElementById('dob');
+        const prnInput = document.getElementById('prn');
+
+        // Helper functions for validating on blur
+        function validateName() {
+            const errorElem = document.getElementById('nameError');
+            if (nameInput.value.trim() === '') {
+                errorElem.textContent = 'Please provide a valid name!';
+                nameInput.setAttribute('aria-invalid', 'true');
+            } else {
+                errorElem.textContent = '';
+                nameInput.setAttribute('aria-invalid', 'false');
+            }
+        }
+
+        function validateEmail() {
+            const errorElem = document.getElementById('emailError');
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(emailInput.value.trim())) {
+                errorElem.textContent = 'Please provide a valid email!';
+                emailInput.setAttribute('aria-invalid', 'true');
+            } else {
+                errorElem.textContent = '';
+                emailInput.setAttribute('aria-invalid', 'false');
+            }
+        }
+
+        function validatePassword() {
+            const errorElem = document.getElementById('passwordError');
+            if (passwordInput.value.length < 6) {
+                errorElem.textContent = 'Password must be at least 6 characters!';
+                passwordInput.setAttribute('aria-invalid', 'true');
+            } else {
+                errorElem.textContent = '';
+                passwordInput.setAttribute('aria-invalid', 'false');
+            }
+        }
+
+        function validateDob() {
+            const errorElem = document.getElementById('dobError');
+            if (dobInput.value === '') {
+                errorElem.textContent = 'Please provide a valid date of birth!';
+                dobInput.setAttribute('aria-invalid', 'true');
+            } else {
+                errorElem.textContent = '';
+                dobInput.setAttribute('aria-invalid', 'false');
+            }
+        }
+
+        function validatePrn() {
+            const errorElem = document.getElementById('prnError');
+            if (prnInput.value.trim() === '') {
+                errorElem.textContent = 'Please provide a valid PRN!';
+                prnInput.setAttribute('aria-invalid', 'true');
+            } else {
+                errorElem.textContent = '';
+                prnInput.setAttribute('aria-invalid', 'false');
+            }
+        }
+
+        // Attach blur events for validation after the field loses focus
+        nameInput.addEventListener('blur', validateName);
+        emailInput.addEventListener('blur', validateEmail);
+        passwordInput.addEventListener('blur', validatePassword);
+        dobInput.addEventListener('blur', validateDob);
+        prnInput.addEventListener('blur', validatePrn);
+
+        // Form submission validation
+        document.getElementById('registrationForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            // Run all validations on submit
+            validateName();
+            validateEmail();
+            validatePassword();
+            validateDob();
+            validatePrn();
+
+            const inputs = [nameInput, emailInput, passwordInput, dobInput, prnInput];
+            const isValid = inputs.every(input => input.getAttribute('aria-invalid') === 'false');
+
+            if (isValid) {
+                alert('Registration Successful!');
+            }
+        });
+    </script>
+</body>
+</html>

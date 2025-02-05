@@ -1,0 +1,45 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background-color: #fcfcfc; /* Offwhite background */
+    color: #333;
+}
+.container {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+.dish-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 20px;
+}
+.dish-header h1 {
+    font-size: 3rem;
+    margin: 0;
+    color: #2c1810;
+}
+.dish-header img {
+    width: 300px;
+    border-radius: 10px;
+}
+.ingredients,
+.instructions {
+    margin-bottom: 20px;
+}
+.ingredients h2,
+.instructions h2 {
+    color: #2c1810;
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+.ingredients ul {
+    list-style: inside square;
+    padding-left: 20px;
+}
+.instructions ol {
+    padding-left: 20px;
+}
